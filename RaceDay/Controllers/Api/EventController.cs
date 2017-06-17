@@ -86,8 +86,9 @@ namespace RaceDay.Controllers
                 repository.AddUserToEvent(user, newEvent, AttendingEnum.Attending);
                 repository.SaveChanges();
 
+				var addedEvent = repository.GetEventViewById(newEvent.EventId, UserId);
                 var eventAttendees = repository.GetUsersForEvent(newEvent.EventId);
-                return Request.CreateResponse(HttpStatusCode.Created, new { eventinfo = JsonEvent.FromDatabase(newEvent), attendees = JsonUser.FromDatabase(eventAttendees) });
+                return Request.CreateResponse(HttpStatusCode.Created, new { eventinfo = addedEvent, attendees = JsonUser.FromDatabase(eventAttendees) });
             }
 
             return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unable to create event");
