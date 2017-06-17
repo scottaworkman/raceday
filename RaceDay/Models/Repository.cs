@@ -193,9 +193,9 @@ namespace RaceDay.Models
 		/// <param name="eEvent"></param>
 		/// <returns></returns>
 		/// 
-		public List<MFUser> GetUsersForEvent(Event eEvent)
+		public List<MFUser> GetUsersForEvent(int eventId)
 		{
-			var participants = context.Attendings.Where(r => r.EventId == eEvent.EventId).OrderBy(o => o.MFUser.LastName).ThenBy(o => o.MFUser.FirstName);
+			var participants = context.Attendings.Where(r => r.EventId == eventId).OrderBy(o => o.MFUser.LastName).ThenBy(o => o.MFUser.FirstName);
 
 			List<MFUser> users = new List<MFUser>();
 			foreach(Attending p in participants)
@@ -309,6 +309,11 @@ namespace RaceDay.Models
 		{
 			return context.viewEventUserAttendances.Where(r => (r.UserId == idUser) && (r.Date >= dtStart)).OrderBy(o => o.Date).ToList();
 		}
+
+        public viewEventUserAttendance GetEventViewById(int eventId, string idUser)
+        {
+            return context.viewEventUserAttendances.Where(r => (r.EventId == eventId) && (r.UserId == idUser)).FirstOrDefault();
+        }
 
 		#endregion
 	}

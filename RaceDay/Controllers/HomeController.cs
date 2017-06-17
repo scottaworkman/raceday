@@ -193,7 +193,7 @@ namespace RaceDay.Controllers
 
 			// Retrieve participants and format into appropriate view model
 			//
-			var attendings = repository.GetUsersForEvent(currentEvent);
+			var attendings = repository.GetUsersForEvent(currentEvent.EventId);
 			List<EventParticipant> participants = new List<EventParticipant>();
 			foreach (MFUser user in attendings)
 			{

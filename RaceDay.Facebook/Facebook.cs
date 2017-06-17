@@ -241,7 +241,7 @@ namespace RaceDay.Facebook
 				responseReader = new StreamReader(request.GetResponse().GetResponseStream());
 				response = responseReader.ReadToEnd();
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				return false;
 			}
@@ -310,7 +310,7 @@ namespace RaceDay.Facebook
 				responseReader = new StreamReader(request.GetResponse().GetResponseStream());
 				response = responseReader.ReadToEnd();
 			}
-			catch( Exception e )
+			catch( Exception )
 			{
 				return String.Empty;
 			}

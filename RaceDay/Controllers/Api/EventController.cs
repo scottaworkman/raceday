@@ -40,11 +40,11 @@ namespace RaceDay.Controllers
 			}
 
 			Repository repository = new Repository();
-			var eventInfo = repository.GetEventById(id);
+			var eventInfo = repository.GetEventViewById(id, UserId);
 			if (eventInfo != null)
 			{
-				var eventAttendees = repository.GetUsersForEvent(eventInfo);
-				return Request.CreateResponse(HttpStatusCode.OK, new { eventinfo = JsonEvent.FromDatabase(eventInfo), attendees = JsonUser.FromDatabase(eventAttendees) });
+				var eventAttendees = repository.GetUsersForEvent(eventInfo.EventId);
+				return Request.CreateResponse(HttpStatusCode.OK, new { eventinfo = eventInfo, attendees = JsonUser.FromDatabase(eventAttendees) });
 			}
 			else
 				return Request.CreateErrorResponse(HttpStatusCode.NotFound, string.Format("Event {0} not found", id));
@@ -85,9 +85,12 @@ namespace RaceDay.Controllers
                 var user = repository.GetUserById(UserId);
                 repository.AddUserToEvent(user, newEvent, AttendingEnum.Attending);
                 repository.SaveChanges();
+
+                var eventAttendees = repository.GetUsersForEvent(newEvent.EventId);
+                return Request.CreateResponse(HttpStatusCode.Created, new { eventinfo = JsonEvent.FromDatabase(newEvent), attendees = JsonUser.FromDatabase(eventAttendees) });
             }
 
-            return Request.CreateResponse(HttpStatusCode.Created, JsonEvent.FromDatabase(newEvent));
+            return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Unable to create event");
 		}
 
 		// PUT api/<controller>/5

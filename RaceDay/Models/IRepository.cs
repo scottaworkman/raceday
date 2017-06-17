@@ -29,7 +29,7 @@ namespace RaceDay.Models
 		void AddUserToEvent(MFUser user, Event newEvent, AttendingEnum isAttending);
 		void RemoveUserFromEvent(MFUser user, Event eEvent);
 		List<Event> GetUserEvents(MFUser user);
-		List<MFUser> GetUsersForEvent(Event eEvent);
+		List<MFUser> GetUsersForEvent(int eventId);
 
 		List<viewEventUserAttendance> GetUpcomingEventsForUser(DateTime dtStart, string idUser);
 	}
