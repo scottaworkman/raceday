@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error Detection | RaceDay";
+}
+
+<div class="alert alert-danger" role="alert" style="margin-top: 20px;"><h4>An error has been detected</h4>The following error was detected and is preventing the previous action from completing.</div>
+
+@{
+    Exception err = Model.Exception;
+    while( err != null)
+    {
+        <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-12" style="padding-left: 30px;">@err.Message</div>
+        </div>
+        err = err.InnerException;
+    }
+}
+
+<div class="row">
+    <div class="col-md-12" style="padding-left: 30px;"><a href="/">Return to application</a></div>
+</div>

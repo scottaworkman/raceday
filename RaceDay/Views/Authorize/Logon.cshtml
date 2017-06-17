@@ -1,0 +1,20 @@
+﻿@model RaceDay.ViewModels.LogonViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logon</title>
+</head>
+<body>
+</body>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+	$(document).ready(function () {
+		window.top.location = 'https://graph.facebook.com/oauth/authorize?client_id=' + '@Model.ApplicationId' + '&redirect_uri=' + '@Model.RedirectUri' + '&scope=' + '@Model.Permissions';
+	});
+</script>
+</html>

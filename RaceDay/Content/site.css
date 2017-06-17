@@ -1,0 +1,66 @@
+﻿body { background-color: #fff; }
+.row.header { background-color: #eeeeff; }
+.page-header { margin: 0; padding: 0.7em 0; }
+	.page-header a { float: left; display: block; text-decoration: none; width: 36px; height: 36px; margin-left: 4px; margin-top: 6px; }
+	.page-header h1 { font-size: 16px; margin: 0 0.1em; padding-left: 50px; background-image: url(images/logo-small.png); background-position: left center; background-repeat: no-repeat; }
+	.page-header h1 small { font-size: 12px; display: block; margin-top: 0.2em; line-height: 1.2em; }
+
+.tooltip-inner { white-space: nowrap; padding: 0; background-color: transparent; }
+.tooltip-alert { padding: 8px 10px; font-weight: bolder; color: #A94442; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; }
+.control-label.required span.required { margin-left: 4px; font-size: 8px; color: #d40000;}
+
+#event-form { margin: 20px 0; }
+#event-form .panel-heading { background-image: url(images/background-heading.png); background-position: left bottom; background-repeat: repeat-x; }
+#event-form .panel-heading a { text-decoration: none; }
+#event-form .panel-heading a span { margin-left: 6px; }
+#event-form #collapse-form { padding: 15px; }
+
+.panel-group.event { margin: 20px 0 0 0; }
+.panel-group.event .panel-heading { background-image: url(images/background-heading.png); background-position: left bottom; background-repeat: repeat-x; }
+.panel-group.event .panel-heading a { text-decoration: none; }
+.panel-group .panel-collapse { padding: 10px 15px; }
+
+.panel-heading .glyphicon.glyphicon-menu-down, .panel-heading .glyphicon.glyphicon-menu-up { color: #337ab7; margin-left: 6px; }
+.panel-heading .event-date { display: block; margin: 0 0 2px 0; font-weight: bold; margin-right: 10px; color: #343744; }
+.panel-heading .button-container { margin-top: 8px; font-size: 14px; cursor: pointer; font-weight: normal; }
+.panel-heading .event-button.event-notattending { color: #666; }
+.panel-heading .event-button span.glyphicon { margin-right: 6px; font-size: 18px; vertical-align: text-top; margin-top: -2px; }
+.panel-heading .event-button.event-attending span.glyphicon { color: #068d00; font-weight: bold; }
+.panel-heading .event-button.event-attending span.glyphicon.glyphicon-hourglass { color: #808080; }
+.panel-heading .event-button.event-attending span.glyphicon.glyphicon-unchecked { color: #666666; }
+
+.panel-heading .panel-title { font-size: 14px; }
+
+.event-info .calendar { float: right; margin-left: 10px; }
+.event-info .calendar img { width: 16px; }
+.event-info .url { }
+.event-info .location { font-size: 14px; }
+.event-info .description { margin: 5px 0; font-size: 12px; }
+
+.event-participants { margin-top: 10px; padding-top: 10px; border-top: solid 1px #ddd; }
+.event-participants a { color: #3b5998; text-decoration: none; cursor: pointer; font-size: 14px; font-weight: bold; }
+.event-participants a::after { clear: both; display: table; content: " "; }
+.event-participants .fbimage { margin: 0 8px 10px 0; vertical-align: top; border: solid 1px #fff; float: left; }
+.event-participants .fbimage:hover { border: solid 1px #3b5998; }
+.event-participants .fbname { padding-top: 8px; }
+.event-participants .fbname:hover { text-decoration: underline; }
+
+div.fblinks { margin: 10px 15px; }
+div.fblinks a.fblink { font-size: 13px; text-transform: uppercase; display: none; }
+
+@media (min-width: 768px) {
+	.page-header { padding: 1em 0; }
+	.page-header a { width: 48px; height: 48px; margin-left: 12px; }
+	.page-header h1 { font-size: 28px; margin: 0 0.5em; padding-left: 60px; background-image: url(images/logo.png); }
+	.page-header h1 small { font-size: 16px; margin-top: 0.2em; }
+	.event-info .calendar img { width: 24px; }
+	.event-info .calendar.ical { padding-top: 1px; }
+}
+
+@media (min-width: 992px) {
+	.panel-heading .event-date { display: inline; margin: 0 12px 0 6px; }
+	.panel-heading .button-container { float: right; padding-right: 10px; margin-top: 0; font-size: 16px; }
+	.panel-heading .panel-title { font-size: 16px; }
+	.event-info .location { font-size: 16px; }
+	.event-info .description { margin: 10px 0; font-size: 13px; }
+}

@@ -1,0 +1,21 @@
+﻿@model RaceDay.ViewModels.FBAppViewModel
+@{
+    Layout = null;
+    String url = Model.ApplicationProtocol + "://apps.facebook.com/" + Model.ApplicationPath;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+	<title>Logon | RaceDay</title>
+</head>
+<body>
+</body>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+	$(document).ready(function () {
+		window.location = '@url';
+	});
+</script>
+</html>

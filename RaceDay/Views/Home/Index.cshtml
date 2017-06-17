@@ -1,0 +1,85 @@
+﻿@using RaceDay.ViewModels
+@using RaceDay.Utilities
+@model RaceDay.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "RaceDay Events";
+    var fbUrl = "https://apps.facebook.com/" + RaceDayConfiguration.Instance.ApplicationPath + "/";
+    var appUrl = VirtualPathUtility.ToAbsolute("~/");
+}
+
+<div class="row">
+    <div class="col-sm-4">
+
+        <div id="event-form" class="panel-group form" role="tablist">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="collapse-form-heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-form" aria-expanded="false" aria-controls="collapse-form">Add New Event <span class="glyphicon glyphicon-menu-down" style="font-size: 12px;"></span></a>
+                    </h4>
+                </div>
+                <div id="collapse-form" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-form-heading">
+
+                @using (Html.BeginForm(MVC.Home.Event(), FormMethod.Post))
+                {
+                    @Html.EditorFor(m => m.EventForm, MVC.Shared.Views.EditorTemplates._EventForm)
+                    <div style="text-align: center"><input type="submit" value="Add Event" class="btn btn-primary" /></div>
+                }
+
+                </div>
+             </div>
+        </div>
+
+        <div class="fblinks">
+            <a id="inFacebook" class="fblink" href="@fbUrl" target="_top">Run App inside Facebook</a>
+            <a id="outFacebook" class="fblink" href="@appUrl" target="_top">Run App outside Facebook</a>
+        </div>
+    </div>
+    <div class="col-sm-8">
+
+        @foreach(EventInfo e in Model.Events)
+        {
+            <a id='@Html.Raw("e")@e.EventId' />
+            <div class="panel-group event" role="tablist" data-event-id="@e.EventId">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="collapse-event-heading-@e.EventId">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-event-@e.EventId" aria-expanded="false" aria-controls="collapse-event-@e.EventId"><span class="event-date">@e.Date.ToShortDateString()</span>@e.Name <span class="glyphicon glyphicon-menu-down" style="font-size: 12px;"></span></a>
+                            <div class="button-container">
+                            @if (e.Attending)
+                            {
+                                @Html.Partial(MVC.Shared.Views.Partials._AttendingButton, e.EventId)
+                            }
+                            else
+                            {
+                                @Html.Partial(MVC.Shared.Views.Partials._NotAttendingButton, e.EventId)
+                            }
+                            </div>
+                        </h4>
+                    </div>
+                    <div id="collapse-event-@e.EventId" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-event-heading-@e.EventId">
+                        <div class="event-info">
+                            <a href="" class="calendar ical" title="Download iCalendar"><img src="content/images/calendar-add-icon.png" alt="Add to Calendar" /></a>
+                            <a href="@Html.GoogleCalendar(e.Date, e.Name, e.Location, e.Url)" class="calendar google" title="Add to Google Calendar" target="_blank"><img src="content/images/google-calendar-icon.png" alt="Google Calendar" /></a>
+                            @if (!String.IsNullOrEmpty(e.Location))
+                            {
+                                <div class="location">@e.Location</div>
+                            }
+                            @if (!String.IsNullOrEmpty(e.Url))
+                            {
+                                <div class="url"><a href="@e.Url" target="_blank">@e.Url</a></div>
+                            }
+                            @if (!String.IsNullOrEmpty(e.Description))
+                            {
+                                <div class="description">@e.Description</div>
+                            }
+                        </div>
+                        <div class="event-participants">
+
+                        </div>
+                    </div>
+                </div>
+            </div>                
+        }
+
+    </div>
+</div>
