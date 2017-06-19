@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceDay.Facebook", "RaceDay.Facebook\RaceDay.Facebook.csproj", "{49DB8971-527F-49B7-ABBF-3F1AD88288D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceDay.Utilities", "RaceDay.Utilities\RaceDay.Utilities.csproj", "{27A428C0-C9CB-46FE-AC84-EDCCAFCE65F1}"

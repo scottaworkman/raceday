@@ -57,7 +57,8 @@ namespace RaceDay.Controllers
 				{
 					token = groupMember.AccessToken,
 					expiration = groupMember.AccessExpiration.Value,
-                    role = groupMember.Role
+                    role = groupMember.Role,
+                    name = mfUser.Name
 				};
 
 				return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -76,6 +77,7 @@ namespace RaceDay.Controllers
 			public string token { get; set; }
 			public DateTime expiration { get; set; }
             public int role { get; set; }
+            public string name { get; set; }
         }
     }
 }
