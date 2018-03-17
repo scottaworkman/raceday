@@ -149,14 +149,14 @@ namespace RaceDay.Controllers
 				repository.RemoveUserFromEvent(currentUser, currentEvent);
 				repository.SaveChanges();
 
-				result.Button = RenderPartialViewToString(MVC.Shared.Views.Partials._NotAttendingButton, Convert.ToInt32(EventId));
+				result.Button = RenderPartialViewToString(MVC.Shared.Views.Partials._NotAttendingButton, EventInfo.CopyFromEvent(false, currentEvent));
 			}
 			else
 			{
 				repository.AddUserToEvent(currentUser, currentEvent, AttendingEnum.Attending);
 				repository.SaveChanges();
 
-				result.Button = RenderPartialViewToString(MVC.Shared.Views.Partials._AttendingButton, Convert.ToInt32(EventId));
+				result.Button = RenderPartialViewToString(MVC.Shared.Views.Partials._AttendingButton, EventInfo.CopyFromEvent(true, currentEvent));
 			}
 
 			// Rebind the participant list with the change

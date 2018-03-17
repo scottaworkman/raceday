@@ -205,6 +205,21 @@ namespace Links
             public static readonly string glyphicons_halflings_regular_woff2 = Url("glyphicons-halflings-regular.woff2");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class images {
+            private const string URLPATH = "~/Content/images";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string ajax_loader_gif = Url("ajax-loader.gif");
+            public static readonly string background_heading_png = Url("background-heading.png");
+            public static readonly string calendar_add_icon_png = Url("calendar-add-icon.png");
+            public static readonly string google_calendar_icon_png = Url("google-calendar-icon.png");
+            public static readonly string googleicons_png = Url("googleicons.png");
+            public static readonly string logo_original_png = Url("logo-original.png");
+            public static readonly string logo_small_png = Url("logo-small.png");
+            public static readonly string logo_png = Url("logo.png");
+        }
+    
         public static readonly string site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.css") ? Url("site.min.css") : Url("site.css");
     }
 
@@ -249,6 +264,12 @@ namespace Links
                 }
             }
             public static partial class fonts 
+            {
+                public static class Assets
+                {
+                }
+            }
+            public static partial class images 
             {
                 public static class Assets
                 {

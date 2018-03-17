@@ -45,10 +45,10 @@ namespace RaceDay.Models
 			}
 			else if (user.LastUpdate.AddDays(STALE_USER) < DateTime.Now)
 			{
-				user.Name = fbUser.name;
-				user.FirstName = fbUser.first_name;
-				user.LastName = fbUser.last_name;
-				user.Email = fbUser.email;
+				user.Name = (!string.IsNullOrEmpty(fbUser.name) ? fbUser.name : user.Name);
+				user.FirstName = (!string.IsNullOrEmpty(fbUser.first_name) ? fbUser.first_name : user.FirstName);
+				user.LastName = (!string.IsNullOrEmpty(fbUser.last_name) ? fbUser.last_name : user.LastName);
+				user.Email = (!string.IsNullOrEmpty(fbUser.email) ? fbUser.email : user.Email);
 				user.LastUpdate = DateTime.Now;
 			}
 

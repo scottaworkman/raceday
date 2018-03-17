@@ -22,10 +22,12 @@
 
 .panel-heading .glyphicon.glyphicon-menu-down, .panel-heading .glyphicon.glyphicon-menu-up { color: #337ab7; margin-left: 6px; }
 .panel-heading .event-date { display: block; margin: 0 0 2px 0; font-weight: bold; margin-right: 10px; color: #343744; }
-.panel-heading .button-container { margin-top: 8px; font-size: 14px; cursor: pointer; font-weight: normal; }
+.panel-heading .event-count { font-size: 14px; font-weight: bold; color: white; display: inline-block; background-color: #03A9F4; width: 20px; height: 20px; text-align: center; vertical-align: middle; border-radius: 10px; padding-top: 2px; margin: -2px 5px 0 5px; }
+.panel-heading .button-container { margin-top: 8px; font-size: 14px; font-weight: normal; }
+.panel-heading .event-button { display: inline-block; cursor: pointer; width: 122px; }
 .panel-heading .event-button.event-notattending { color: #666; }
 .panel-heading .event-button span.glyphicon { margin-right: 6px; font-size: 18px; vertical-align: text-top; margin-top: -2px; }
-.panel-heading .event-button.event-attending span.glyphicon { color: #068d00; font-weight: bold; }
+.panel-heading .event-button.event-attending span.glyphicon { color: #F57C00; font-weight: bold; }
 .panel-heading .event-button.event-attending span.glyphicon.glyphicon-hourglass { color: #808080; }
 .panel-heading .event-button.event-attending span.glyphicon.glyphicon-unchecked { color: #666666; }
 

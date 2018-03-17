@@ -15,12 +15,13 @@ namespace RaceDay.ViewModels
 		public String Description { get; set; }
 		public String CreatorId { get; set; }
 		public Boolean Attending { get; set; }
+        public Int32 AttendanceCount { get; set; }
 
 		public EventInfo()
 		{
 		}
 
-		public EventInfo(Int32 eventId, String eventName, DateTime eventDate, String eventUrl, String eventLocation, String eventDescription, String creatorId, Boolean bAttending)
+		public EventInfo(Int32 eventId, String eventName, DateTime eventDate, String eventUrl, String eventLocation, String eventDescription, String creatorId, Boolean bAttending, Int32 nAttendanceCount)
 		{
 			this.EventId = eventId;
 			this.Name = eventName;
@@ -30,7 +31,14 @@ namespace RaceDay.ViewModels
 			this.Description = eventDescription;
 			this.CreatorId = creatorId;
 			this.Attending = bAttending;
+            this.AttendanceCount = nAttendanceCount;
 		}
+
+        public static EventInfo CopyFromEvent(Boolean attending, RaceDay.Models.Event source)
+        {
+
+            return new EventInfo(source.EventId, source.Name, source.Date, source.Url, source.Location, source.Description, source.CreatorId, attending, source.Attendings.Count);
+        }
 
 		/// <summary>
 		/// Create list of events the user can see by copying from DB query result
@@ -53,7 +61,8 @@ namespace RaceDay.ViewModels
 					Location = s.Location,
 					Description = s.Description,
 					CreatorId = s.CreatorId,
-					Attending = (s.Attendings.Count(r => (r.UserId == currentUserId) && (r.Attending1 == (int)AttendingEnum.Attending)) > 0)
+					Attending = (s.Attendings.Count(r => (r.UserId == currentUserId) && (r.Attending1 == (int)AttendingEnum.Attending)) > 0),
+                    AttendanceCount = s.Attendings.Count
 				};
 				dest.Add(d);
 			}

@@ -47,31 +47,31 @@
                             <div class="button-container">
                             @if (e.Attending)
                             {
-                                @Html.Partial(MVC.Shared.Views.Partials._AttendingButton, e.EventId)
+                                @Html.Partial(MVC.Shared.Views.Partials._AttendingButton, e)
                             }
                             else
                             {
-                                @Html.Partial(MVC.Shared.Views.Partials._NotAttendingButton, e.EventId)
+                                @Html.Partial(MVC.Shared.Views.Partials._NotAttendingButton, e)
                             }
                             </div>
                         </h4>
                     </div>
                     <div id="collapse-event-@e.EventId" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-event-heading-@e.EventId">
                         <div class="event-info">
-                            <a href="" class="calendar ical" title="Download iCalendar"><img src="content/images/calendar-add-icon.png" alt="Add to Calendar" /></a>
-                            <a href="@Html.GoogleCalendar(e.Date, e.Name, e.Location, e.Url)" class="calendar google" title="Add to Google Calendar" target="_blank"><img src="content/images/google-calendar-icon.png" alt="Google Calendar" /></a>
+                            <!-- <a href="" class="calendar ical" title="Download iCalendar"><img src="content/images/calendar-add-icon.png" alt="Add to Calendar" /></a> -->
+                            <a href="@Html.GoogleCalendar(e.Date, e.Name, e.Location, e.Url)" class="calendar google" title="Add to Google Calendar" target="_blank"><img src="raceday/content/images/google-calendar-icon.png" alt="Google Calendar" /></a>
                             @if (!String.IsNullOrEmpty(e.Location))
-                            {
-                                <div class="location">@e.Location</div>
-                            }
+    {
+                        <div class="location">@e.Location</div>
+}
                             @if (!String.IsNullOrEmpty(e.Url))
-                            {
-                                <div class="url"><a href="@e.Url" target="_blank">@e.Url</a></div>
-                            }
+    {
+                        <div class="url"><a href="@e.Url" target="_blank">@e.Url</a></div>
+}
                             @if (!String.IsNullOrEmpty(e.Description))
-                            {
-                                <div class="description">@e.Description</div>
-                            }
+    {
+                        <div class="description">@e.Description</div>
+}
                         </div>
                         <div class="event-participants">
 

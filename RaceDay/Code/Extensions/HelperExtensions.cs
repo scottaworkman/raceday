@@ -29,7 +29,7 @@ namespace System.Web.Mvc.Html
 
 			sb.Append("https://www.google.com/calendar/event?action=TEMPLATE");
 			sb.Append("&text=" + HttpUtility.UrlEncode(eventName));
-			sb.Append("&dates=" + eventDate.ToString("yyyyMMdd") + "/" + eventDate.ToString("yyyyMMdd"));
+			sb.Append("&dates=" + eventDate.ToString("yyyyMMdd") + "/" + eventDate.AddDays(1).ToString("yyyyMMdd"));
 			if (!String.IsNullOrEmpty(eventLocation))
 				sb.Append("&location=" + HttpUtility.UrlEncode(eventLocation));
 			if (!String.IsNullOrEmpty(eventUrl))

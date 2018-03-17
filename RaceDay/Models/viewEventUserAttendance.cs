@@ -24,5 +24,6 @@ namespace RaceDay.Models
         public string CreatorId { get; set; }
         public string UserId { get; set; }
         public int Attending { get; set; }
+        public Nullable<int> AttendanceCount { get; set; }
     }
 }

@@ -1,4 +1,4 @@
 ﻿@using RaceDay.ViewModels
-@model Int32
-
-<div class="event-button event-notattending" title="Click to attend" data-event-id="@Model"><span class="glyphicon glyphicon-unchecked"></span><span class="status">@AttendanceResult.NotAttendingMessage</span></div>
+@model EventInfo
+<span class="event-count">@Model.AttendanceCount</span>
+<div class="event-button event-notattending" title="Click to attend" data-event-id="@Model.EventId"><span class="glyphicon glyphicon-unchecked"></span><span class="status">@AttendanceResult.NotAttendingMessage</span></div>
