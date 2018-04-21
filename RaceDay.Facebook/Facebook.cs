@@ -134,23 +134,27 @@ namespace RaceDay.Facebook
 
 		public Boolean IsMemberOfGroup(String fbUserId, String fbGroupId)
 		{
-			if (String.IsNullOrEmpty(access_token))
-				throw new InvalidOperationException("Graph API access token not set");
+            // TODO: Facebook removed this edge so for nowalways return TRUE
+            //
+            return true;
 
-			String groupUrl = String.Format(RELATION_URL, fbGroupId, "members", access_token ) + "&limit=200";
-			String groupResponse = GetHttpRequest(groupUrl);
+			//if (String.IsNullOrEmpty(access_token))
+			//	throw new InvalidOperationException("Graph API access token not set");
 
-			if (!String.IsNullOrEmpty(groupResponse))
-			{
-				var groupMembers = JsonConvert.DeserializeObject<FacebookGroupMemberList>(groupResponse);
-				foreach (FacebookGroupMember member in groupMembers.data)
-				{
-					if (member.id == fbUserId)
-						return true;
-				}
-			}
+			//String groupUrl = String.Format(RELATION_URL, fbGroupId, "members", access_token ) + "&limit=200";
+			//String groupResponse = GetHttpRequest(groupUrl);
 
-			return false;
+			//if (!String.IsNullOrEmpty(groupResponse))
+			//{
+			//	var groupMembers = JsonConvert.DeserializeObject<FacebookGroupMemberList>(groupResponse);
+			//	foreach (FacebookGroupMember member in groupMembers.data)
+			//	{
+			//		if (member.id == fbUserId)
+			//			return true;
+			//	}
+			//}
+
+			//return false;
 		}
 
 		/// <summary>

@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -140,6 +141,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\AdminAttribute.cs" />
     <Compile Include="Code\CustomMVC\InMemoryCache.cs" />
     <Compile Include="Code\CustomMVC\RequiredIfAttribute.cs" />
     <Compile Include="Code\CustomMVC\RequireHttpsAttribute.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\LoginController.cs" />
+    <Compile Include="Controllers\MFUsersController.cs" />
     <Compile Include="Models\MFUser.cs">
       <DependentUpon>RaceDay.tt</DependentUpon>
     </Compile>
@@ -214,6 +217,7 @@
     </Compile>
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MFUserViewModel.cs" />
     <Compile Include="ViewModels\EventFormViewModel.cs" />
     <Compile Include="ViewModels\EventInfo.cs" />
     <Compile Include="ViewModels\EventParticipant.cs" />
@@ -394,6 +398,11 @@
     <Content Include="Views\Shared\Partials\_AttendingButton.cshtml" />
     <Content Include="Views\Shared\Partials\_NotAttendingButton.cshtml" />
     <Content Include="Views\Shared\Partials\_ParticipantList.cshtml" />
+    <Content Include="Views\MFUsers\Create.cshtml" />
+    <Content Include="Views\MFUsers\Delete.cshtml" />
+    <Content Include="Views\MFUsers\Details.cshtml" />
+    <Content Include="Views\MFUsers\Edit.cshtml" />
+    <Content Include="Views\MFUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

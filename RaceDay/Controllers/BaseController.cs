@@ -121,19 +121,6 @@ namespace RaceDay.Controllers
 		{
 			PartialRenderer = this;
 			ViewRenderer = this;
-
-			// Ensure user is in database
-			//
-			if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-			{
-				Repository db = new Repository();
-				MFUser user = db.GetUserById(System.Web.HttpContext.Current.User.Identity.Name);
-				if (user == null)
-				{
-					user = db.CreateUser((Facebook.FacebookUser)System.Web.HttpContext.Current.User);
-					db.SaveChanges();
-				}
-			}
 		}
 
 		#region IRenderView and IRenderPartialView implementation

@@ -44,9 +44,6 @@ namespace RaceDay.Controllers
 
 				AppUserNotification(currentUser.UserId, defaultGroup.Name);
 			}
-			var member = new FacebookConnection(HttpContext.User.Identity).IsMemberOfGroup(FacebookUser.CurrentUser.id, membership[0].Group.FacebookId);
-			if (!member)
-				return RedirectToAction(MVC.Home.Pending());
 
 			model.EventForm.GroupId = membership[0].GroupId;
 
