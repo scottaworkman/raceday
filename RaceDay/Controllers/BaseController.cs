@@ -43,7 +43,7 @@ namespace RaceDay.Controllers
 			return true;
 		}
 
-		protected Boolean AppUserNotification(String UserId, String Group)
+		public static Boolean AppUserNotification(String UserId, String Group)
 		{
 			if (!String.IsNullOrEmpty(RaceDayConfiguration.Instance.NotifyAdminUser))
 			{
@@ -121,11 +121,24 @@ namespace RaceDay.Controllers
 		{
 			PartialRenderer = this;
 			ViewRenderer = this;
-		}
 
-		#region IRenderView and IRenderPartialView implementation
+            // Ensure user is in database
+            //
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Repository db = new Repository();
+                MFUser user = db.GetUserById(System.Web.HttpContext.Current.User.Identity.Name);
+                if (user == null)
+                {
+                    user = db.CreateUser((Facebook.FacebookUser)System.Web.HttpContext.Current.User);
+                    db.SaveChanges();
+                }
+            }
+        }
 
-		public string RenderPartialViewToString(string viewName, object model)
+        #region IRenderView and IRenderPartialView implementation
+
+        public string RenderPartialViewToString(string viewName, object model)
 		{
 			ViewData.Model = model;
 			using (var sw = new StringWriter())

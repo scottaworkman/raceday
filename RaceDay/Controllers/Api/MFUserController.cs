@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+using RaceDay.Models;
+
 namespace RaceDay.Controllers
 {
 	public class MFUserController : ApiController
@@ -27,10 +29,21 @@ namespace RaceDay.Controllers
 				last_name = value.LastName,
 				name = value.Name
 			};
-			repository.CreateUser(fbUser);
+			var mfUser = repository.CreateUser(fbUser);
 			repository.SaveChanges();
 
-			return Request.CreateResponse(HttpStatusCode.Created, "User added to application");
+            List<GroupMember> membership = repository.UserMembership(mfUser);
+            if ((membership == null) || (membership.Count == 0))
+            {
+                Group defaultGroup = repository.FindGroupByCode("JYMF");
+                repository.DefaultGroup(mfUser, defaultGroup, GroupRoleEnum.member);
+                repository.SaveChanges();
+
+                BaseController.AppUserNotification(mfUser.UserId, defaultGroup.Name);
+            }
+
+
+            return Request.CreateResponse(HttpStatusCode.Created, "User added to application");
 		}
 	}
 }
