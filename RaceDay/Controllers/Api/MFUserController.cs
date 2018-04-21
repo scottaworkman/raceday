@@ -38,8 +38,6 @@ namespace RaceDay.Controllers
                 Group defaultGroup = repository.FindGroupByCode("JYMF");
                 repository.DefaultGroup(mfUser, defaultGroup, GroupRoleEnum.member);
                 repository.SaveChanges();
-
-                BaseController.AppUserNotification(mfUser.UserId, defaultGroup.Name);
             }
 
 
